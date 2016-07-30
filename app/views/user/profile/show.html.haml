@@ -1,0 +1,24 @@
+- content_for :toolbar do
+  = link_to edit_user_profile_path, class: 'btn btn-default' do
+    %i.icon-pencil
+    = t('action_button.edit')
+.panel.panel-default
+  .panel-heading
+    %i.icon-edit.icon-large
+    = t('tt.show', resource_name: User.model_name.human)
+  .panel-body
+    = show_for @profile do |s|
+      = s.attribute :name
+      = s.attribute :surname
+      = s.attribute :email
+      = s.attribute :time_zone
+      = s.attribute :created_at
+      = s.attribute :updated_at
+      .panel-footer
+        =link_to edit_user_profile_path(@profile), class: 'btn btn-link'
+        %i.fa.fa-pencil
+        Profil bilgilerini güncelle
+
+        =link_to root_path, class: 'btn btn-link'
+        %i.fa.fa-arrow-left
+        Geri Don
